@@ -1,19 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class teacher_login
+public class teacher_signup
 {
     JFrame frame;
     ImageIcon img = new ImageIcon("logo.png");
     JPanel panel;
-    teacher_login()
+    teacher_signup()
     {
         panel = new JPanel();
         panel.setVisible(true);
         panel.setBackground(new Color(0x2B911));
 
 
-        frame = new JFrame("Teacher Log In");
+        frame = new JFrame("Teacher Sign Up");
         frame.setVisible(true);
         frame.setSize(453,680);
         frame.setResizable(false);
