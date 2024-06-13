@@ -121,7 +121,7 @@ public class teacher_signup extends JFrame implements ActionListener
         if (event.getSource() == signup_btn)
         {
             try {
-                BufferedWriter writer = new BufferedWriter(new FileWriter("\\teachers\\" + name_field.getText() + ".txt"));
+                BufferedWriter writer = new BufferedWriter(new FileWriter("teacher_" + name_field.getText() + ".txt"));
                 writer.write(name_field.getText());
                 writer.write("\n" + email_field.getText());
                 writer.write("\n" + pass_field.getText());
