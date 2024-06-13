@@ -117,7 +117,7 @@ public class Welcome extends JFrame implements ActionListener
         note1.setVisible(true);
         note1.setForeground(new Color(0x2B911));
         //Line 2 of footnote
-        note2 = new JLabel("except Underscore ( _ ) or Hyphens ( - ).");
+        note2 = new JLabel("or spaces except Underscore ( _ ) or Hyphens ( - ).");
         note2.setFont(new Font("Arial", Font.PLAIN, 16));
         note2.setVisible(true);
         note2.setForeground(new Color(0x2B911));
