@@ -8,19 +8,17 @@ public class Window extends JFrame implements ActionListener
     JFrame frame;
     ImageIcon img = new ImageIcon("logo.png");
     JPanel panel_one, panel_two;
-    JLabel p2_heading, p1_heading, name, email, password;
-    JTextField name_field, email_field, pass_field, user_mode;
-    JButton sup_btn, t_login;
+    JLabel p2_heading, p1_heading, name, email, password, teacher_login_text;
+    JTextField name_field, email_field, pass_field;
+    JButton sup_btn, teacher_login_btn;
     Window()
     {
         //USER mode text for left panel
-        user_mode = new JTextField("If you wish to log in as a Teacher,");
-        user_mode.setVisible(true);
-        user_mode.setBackground(null);
-        user_mode.setForeground(Color.WHITE);
-        user_mode.setFont(new Font("Arial", Font.BOLD, 16));
-        user_mode.setBorder(null);
-        user_mode.setEditable(false);
+        teacher_login_text = new JLabel("If you wish to log in as a Teacher,");
+        teacher_login_text.setVisible(true);
+        teacher_login_text.setBackground(null);
+        teacher_login_text.setForeground(Color.WHITE);
+        teacher_login_text.setFont(new Font("Arial", Font.BOLD, 16));
 
         //"password" Label
         password = new JLabel("Password: ");
@@ -73,14 +71,14 @@ public class Window extends JFrame implements ActionListener
         sup_btn.addActionListener(this);
 
         //Teacher Login Button
-        t_login = new JButton("Click Me!");
-        t_login.setVisible(true);
-        t_login.setFocusable(false);
-        t_login.setBackground(new Color(0x2702B911, true));
-        t_login.setBorder(null);
-        t_login.setForeground(Color.WHITE);
-        t_login.setFont(new Font("Arial", Font.BOLD, 16));
-        t_login.addActionListener(this);
+        teacher_login_btn = new JButton("Click Me!");
+        teacher_login_btn.setVisible(true);
+        teacher_login_btn.setFocusable(false);
+        teacher_login_btn.setBackground(new Color(0x2702B911, true));
+        teacher_login_btn.setBorder(null);
+        teacher_login_btn.setForeground(Color.WHITE);
+        teacher_login_btn.setFont(new Font("Arial", Font.BOLD, 16));
+        teacher_login_btn.addActionListener(this);
 
         //Left side panel
         panel_one = new JPanel();
@@ -89,8 +87,8 @@ public class Window extends JFrame implements ActionListener
 
         //Adding Fields in the left panel
         panel_one.add(p1_heading).setBounds(120,135,215,30);
-        panel_one.add(user_mode).setBounds(60,200,250,30);
-        panel_one.add(t_login).setBounds(315,200,90,30);
+        panel_one.add(teacher_login_text).setBounds(40,200,250,30);
+        panel_one.add(teacher_login_btn).setBounds(315,200,90,30);
 
         //right side Panel
         panel_two = new JPanel();
@@ -128,7 +126,7 @@ public class Window extends JFrame implements ActionListener
             Dashboard db = new Dashboard();
             this.dispose();
         }
-        if (event.getSource() == t_login)
+        if (event.getSource() == teacher_login_btn)
         {
             teacher_login page = new teacher_login();
             this.dispose();
