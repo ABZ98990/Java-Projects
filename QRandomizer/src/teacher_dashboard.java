@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,8 +11,8 @@ public class teacher_dashboard extends JFrame implements ActionListener
     int count = 1;
     JFrame frame;
     JPanel panel;
-    JLabel q_label, count_label;
-    JTextField q_text;
+    JLabel q_label, ans_label;
+    JTextField q_text, ans_text;
     ImageIcon img = new ImageIcon("logo.png");
     JButton logout_btn, q_btn, save_btn;
     teacher_dashboard()
@@ -25,7 +24,7 @@ public class teacher_dashboard extends JFrame implements ActionListener
         logout_btn.setBackground(new Color(0x2B911));
         logout_btn.addActionListener(this);
 
-        q_label = new JLabel("Add a new Question:");
+        q_label = new JLabel("Add a Question:");
         q_label.setFont(new Font("Arial", Font.BOLD, 22));
         q_label.setVisible(true);
         q_label.setForeground(new Color(0x2B911));
@@ -43,10 +42,15 @@ public class teacher_dashboard extends JFrame implements ActionListener
         q_btn.setFont(new Font("Arial", Font.PLAIN, 20));
         q_btn.addActionListener(this);
 
-        count_label = new JLabel("Question Count: " + count);
-        count_label.setFont(new Font("Arial", Font.BOLD, 22));
-        count_label.setVisible(true);
-        count_label.setForeground(new Color(0x2B911));
+        ans_label = new JLabel("Answer: ");
+        ans_label.setFont(new Font("Arial", Font.BOLD, 22));
+        ans_label.setVisible(true);
+        ans_label.setForeground(new Color(0x2B911));
+
+        ans_text = new JTextField();
+        ans_text.setFont(new Font("Arial", Font.BOLD, 22));
+        ans_text.setVisible(true);
+        ans_text.setForeground(new Color(0x2B911));
 
         panel = new JPanel();
         panel.setLayout(null);
@@ -55,8 +59,9 @@ public class teacher_dashboard extends JFrame implements ActionListener
         panel.add(logout_btn).setBounds(10,10,100,30);
         panel.add(q_label).setBounds(30, 100,500,35);
         panel.add(q_text).setBounds(30,140,700,35);
-        panel.add(q_btn).setBounds(750,140, 100,35);
-        panel.add(count_label).setBounds(30,225,225, 30);
+        panel.add(q_btn).setBounds(750,240, 100,35);
+        panel.add(ans_label).setBounds(30,200,225, 30);
+        panel.add(ans_text).setBounds(30,240,700,35);
 
         frame = new JFrame("Dashboard");
         frame.setVisible(true);
@@ -89,13 +94,15 @@ public class teacher_dashboard extends JFrame implements ActionListener
                 }
                 else
                 {
-                    writer.write("\n" + q_text.getText());
+                    writer.append("\n" + q_text.getText());
                     q_text.setText("");
                 }
                 writer.close();
                 count +=1;
                 frame.repaint();
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 throw new RuntimeException(e);
             }
         }
