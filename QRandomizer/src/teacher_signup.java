@@ -2,10 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
+import java.io.*;
 public class teacher_signup extends JFrame implements ActionListener
 {
     JFrame frame;
@@ -121,13 +118,23 @@ public class teacher_signup extends JFrame implements ActionListener
         if (event.getSource() == signup_btn)
         {
             try {
-                BufferedWriter writer = new BufferedWriter(new FileWriter("./Teachers/" + name_field.getText() + ".txt"));
-                writer.write(name_field.getText());
-                writer.write("\n" + email_field.getText());
-                writer.write("\n" + pass_field.getText());
-                writer.close();
-                JOptionPane.showMessageDialog(this, "Credentials have been stored!", "Successful", JOptionPane.PLAIN_MESSAGE);
-            }
+                File file_name = new File("./Teachers/" + name_field.getText() + ".txt");
+                if (file_name.exists())
+                {
+                    name_field.setText("");
+                    JOptionPane.showMessageDialog(this, "Username already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else
+                {
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("./Teachers/" + name_field.getText() + ".txt"));
+                    writer.write(name_field.getText());
+                    writer.write("\n" + email_field.getText());
+                    writer.write("\n" + pass_field.getText());
+                    writer.close();
+                    JOptionPane.showMessageDialog(this, "Credentials have been stored!", "Successful", JOptionPane.PLAIN_MESSAGE);
+                }
+
+                }
             catch (IOException e)
             {
                 e.printStackTrace();

@@ -74,7 +74,7 @@ public class teacher_login extends JFrame implements ActionListener
 
         panel.add(login_btn).setBounds(170,330,95,30);
 
-        frame = new JFrame("Teacher Sign Up");
+        frame = new JFrame("Teacher Log In");
         frame.setVisible(true);
         frame.setSize(453,680);
         frame.setResizable(false);
@@ -101,16 +101,17 @@ public class teacher_login extends JFrame implements ActionListener
                 if (file_name.exists())
                 {
                     BufferedReader reader = new BufferedReader(new FileReader("./Teachers/" + name_field.getText() + ".txt"));
-                    System.out.println(reader.readLine());
+                    String first = reader.readLine();
                     String last = null, line;
                     while ((line = reader.readLine())!= null)
                     {
                         last = line;
                     }
-                    System.out.println(last);
+                    teacher_dashboard dashboard = new teacher_dashboard();
+                    frame.dispose();
                 }
                 else {
-                    System.out.println("the File does not exist");
+                    JOptionPane.showMessageDialog(this,"User does not exist!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
             catch (IOException e)
