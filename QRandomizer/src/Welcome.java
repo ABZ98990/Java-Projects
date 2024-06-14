@@ -188,7 +188,7 @@ public class Welcome extends JFrame implements ActionListener
         }
         if (event.getSource() == teacher_login_btn)
         {
-            student_login page = new student_login();
+            teacher_login page = new teacher_login();
             frame.dispose();
         }
         if (event.getSource() == teacher_signup_btn)
