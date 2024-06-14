@@ -4,26 +4,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
-public class teacher_login extends JFrame implements ActionListener
+public class student_login extends JFrame implements ActionListener
 {
     JFrame frame;
     ImageIcon img = new ImageIcon("logo.png");
     JPanel panel;
     JLabel heading, name, password;
     JTextField name_field, pass_field;
-    JButton return_btn, login_btn;
-    teacher_login()
+    JButton back_btn, login_btn;
+    student_login()
     {
-        return_btn = new JButton("Back");
-        return_btn.setBackground(Color.WHITE);
-        return_btn.setForeground(new Color(0x2B911));
-        return_btn.setVisible(true);
-        return_btn.setFocusable(false);
-        return_btn.setFont(new Font("Arial", Font.BOLD, 16));
-        return_btn.addActionListener(this);
+        back_btn = new JButton("Back");
+        back_btn.setBackground(Color.WHITE);
+        back_btn.setForeground(new Color(0x2B911));
+        back_btn.setVisible(true);
+        back_btn.setFocusable(false);
+        back_btn.setFont(new Font("Arial", Font.BOLD, 16));
+        back_btn.addActionListener(this);
 
         //Heading in the right panel
-        heading = new JLabel("Teacher Login Page");
+        heading = new JLabel("Student Login Page");
         heading.setForeground(Color.WHITE);
         heading.setFont(new Font("Arial", Font.BOLD, 22));
         heading.setVisible(true);
@@ -64,17 +64,17 @@ public class teacher_login extends JFrame implements ActionListener
         panel.setBackground(new Color(0x2B911));
         panel.setLayout(null);
 
-        panel.add(return_btn).setBounds(5,5,75,25);
-        panel.add(heading).setBounds(150,120, 250, 30);
-        panel.add(name).setBounds(50, 160, 100,30);
-        panel.add(name_field).setBounds(150,220,225, 30);
+        panel.add(back_btn).setBounds(5,5,75,25);
+        panel.add(heading).setBounds(120,120, 250, 30);
+        panel.add(name).setBounds(50, 200, 100,30);
+        panel.add(name_field).setBounds(150,200,225, 30);
         panel.add(password).setBounds(50, 260, 100,30);
         panel.add(pass_field).setBounds(150,260,225, 30);
 
 
         panel.add(login_btn).setBounds(170,330,95,30);
 
-        frame = new JFrame("Teacher Login Page");
+        frame = new JFrame("Student Login");
         frame.setVisible(true);
         frame.setSize(453,680);
         frame.setResizable(false);
@@ -89,7 +89,7 @@ public class teacher_login extends JFrame implements ActionListener
     @Override
     public void actionPerformed(ActionEvent event)
     {
-        if (event.getSource() == return_btn)
+        if (event.getSource() == back_btn)
         {
             Welcome win = new Welcome();
             frame.dispose();
@@ -97,10 +97,10 @@ public class teacher_login extends JFrame implements ActionListener
         if (event.getSource() == login_btn)
         {
             try {
-                File file_name = new File("./Teachers/" + name_field.getText() + ".txt");
+                File file_name = new File("./Students/" + name_field.getText() + ".txt");
                 if (file_name.exists())
                 {
-                    BufferedReader reader = new BufferedReader(new FileReader("./Teachers/" + name_field.getText() + ".txt"));
+                    BufferedReader reader = new BufferedReader(new FileReader("./Students/" + name_field.getText() + ".txt"));
                     String first = reader.readLine();
                     String last = null, line;
                     while ((line = reader.readLine())!= null)

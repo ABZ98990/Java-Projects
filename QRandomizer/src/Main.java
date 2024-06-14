@@ -4,6 +4,6 @@ public class Main
     {
         //new Welcome();
         //new teacher_signup();
-        new teacher_login();
+        new student_login();
     }
 }
