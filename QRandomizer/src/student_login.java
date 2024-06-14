@@ -66,13 +66,13 @@ public class student_login extends JFrame implements ActionListener
 
         panel.add(back_btn).setBounds(5,5,75,25);
         panel.add(heading).setBounds(120,120, 250, 30);
-        panel.add(name).setBounds(50, 200, 100,30);
-        panel.add(name_field).setBounds(150,200,225, 30);
-        panel.add(password).setBounds(50, 260, 100,30);
-        panel.add(pass_field).setBounds(150,260,225, 30);
+        panel.add(name).setBounds(60, 170, 100,30);
+        panel.add(name_field).setBounds(60,200,325, 30);
+        panel.add(password).setBounds(60, 250, 100,30);
+        panel.add(pass_field).setBounds(60,280,325, 30);
 
 
-        panel.add(login_btn).setBounds(170,330,95,30);
+        panel.add(login_btn).setBounds(170,350,95,30);
 
         frame = new JFrame("Student Login");
         frame.setVisible(true);
