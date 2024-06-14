@@ -86,18 +86,23 @@ public class teacher_dashboard extends JFrame implements ActionListener
         if (event.getSource() == q_btn)
         {
             try {
-                BufferedWriter writer = new BufferedWriter(new FileWriter("./QnA/q_"+count+".txt"));
+                BufferedWriter q_writer = new BufferedWriter(new FileWriter("./QnA/q_"+count+".txt"));
+                BufferedWriter ans_writer = new BufferedWriter(new FileWriter("./QnA/a_" + count + ".txt"));
                 if (count < 2)
                 {
-                    writer.write(q_text.getText());
+                    q_writer.write(q_text.getText());
+                    ans_writer.write(ans_text.getText());
                     q_text.setText("");
+                    ans_text.setText("");
                 }
                 else
                 {
-                    writer.append("\n" + q_text.getText());
+                    q_writer.append("\n" + q_text.getText());
+                    ans_writer.append("\n" + q_text.getText());
+                    ans_text.setText("");
                     q_text.setText("");
                 }
-                writer.close();
+                q_writer.close();
                 count +=1;
                 frame.repaint();
             }
