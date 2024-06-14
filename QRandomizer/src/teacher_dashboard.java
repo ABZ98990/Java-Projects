@@ -1,12 +1,10 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 
-public class Dashboard extends JFrame
+public class teacher_dashboard extends JFrame
 {
     JFrame frame;
     ImageIcon img = new ImageIcon("logo.png");
-    Dashboard()
+    teacher_dashboard()
     {
         frame = new JFrame("Dashboard");
         frame.setVisible(true);

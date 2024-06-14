@@ -59,8 +59,7 @@ public class Welcome extends JFrame implements ActionListener
         panel_one.add(teacher_login_btn).setBounds(190,240,95,30);
         panel_one.add(teacher_signup_text).setBounds(60,300,380,30);
         panel_one.add(teacher_signup_btn).setBounds(190,340,95,30);
-
-
+        
 
         //right side Panel
         panel_two = new JPanel();
@@ -154,7 +153,7 @@ public class Welcome extends JFrame implements ActionListener
     {
         if (event.getSource() == student_signup_btn)
         {
-            Dashboard db = new Dashboard();
+            teacher_dashboard db = new teacher_dashboard();
             frame.dispose();
         }
         if (event.getSource() == teacher_login_btn)

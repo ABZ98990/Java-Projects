@@ -97,13 +97,21 @@ public class teacher_login extends JFrame implements ActionListener
         if (event.getSource() == login_btn)
         {
             try {
-                BufferedReader reader = new BufferedReader(new FileReader("teacher_" + name_field.getText() + ".txt"));
-                String last = null, line;
-                while ((line = reader.readLine())!= null)
+                File file_name = new File("./Teachers/" + name_field.getText() + ".txt");
+                if (file_name.exists())
                 {
-                    last = line;
+                    BufferedReader reader = new BufferedReader(new FileReader("./Teachers/" + name_field.getText() + ".txt"));
+                    System.out.println(reader.readLine());
+                    String last = null, line;
+                    while ((line = reader.readLine())!= null)
+                    {
+                        last = line;
+                    }
+                    System.out.println(last);
                 }
-                System.out.println(last);
+                else {
+                    System.out.println("the File does not exist");
+                }
             }
             catch (IOException e)
             {
