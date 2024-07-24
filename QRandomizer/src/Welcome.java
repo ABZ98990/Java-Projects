@@ -157,13 +157,21 @@ public class Welcome extends JFrame implements ActionListener
         {
             if (event.getSource() == student_signup_btn)
             {
-                try {
-                    if(name_field.getText() == "" || email_field.getText() == "" || pass_field.getText() == "")
-                    {
-                        JOptionPane.showMessageDialog(this,"Input field(s) cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                    else
-                    {
+                if(name_field.getText() == "")
+                {
+                    JOptionPane.showMessageDialog(this,"Name field cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else if (email_field.getText() == "")
+                {
+                    JOptionPane.showMessageDialog(this,"Email field cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+
+                } else if (pass_field.getText() == "")
+                {
+                    JOptionPane.showMessageDialog(this,"Password field cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else
+                {
+                    try {
                         File file_name = new File("./Students/" + name_field.getText() + ".txt");
                         if (file_name.exists())
                         {
@@ -182,10 +190,10 @@ public class Welcome extends JFrame implements ActionListener
                             frame.dispose();
                         }
                     }
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
+                    catch (IOException e)
+                    {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

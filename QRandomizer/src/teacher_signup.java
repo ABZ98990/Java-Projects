@@ -132,8 +132,12 @@ public class teacher_signup extends JFrame implements ActionListener
                     writer.write("\n" + pass_field.getText());
                     writer.close();
                     JOptionPane.showMessageDialog(this, "Credentials have been stored!", "Successful", JOptionPane.PLAIN_MESSAGE);
+                    name_field.setText("");
+                    email_field.setText("");
+                    pass_field.setText("");
+                    teacher_login teacher = new teacher_login();
+                    frame.dispose();
                 }
-
                 }
             catch (IOException e)
             {

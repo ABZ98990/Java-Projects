@@ -107,11 +107,27 @@ public class teacher_login extends JFrame implements ActionListener
                     {
                         last = line;
                     }
-                    student_dashboard dashboard = new student_dashboard();
-                    frame.dispose();
+                    if (name_field.getText().equals(first))
+                    {
+                        if (pass_field.getText().equals(last))
+                        {
+                            student_dashboard dashboard = new student_dashboard();
+                            frame.dispose();
+                        }
+                        else
+                        {
+                            pass_field.setText("");
+                            JOptionPane.showMessageDialog(this, "Incorrect Password!");
+                        }
+                    }
+                    else
+                    {
+                        name_field.setText("");
+                        JOptionPane.showMessageDialog(this, "Wrong Name");
+                    }
                 }
                 else {
-                    JOptionPane.showMessageDialog(this,"User does not exist!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this,"Incorrect username!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
             catch (IOException e)
