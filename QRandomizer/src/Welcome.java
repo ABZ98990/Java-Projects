@@ -2,10 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Welcome extends JFrame implements ActionListener
 {
@@ -114,6 +111,7 @@ public class Welcome extends JFrame implements ActionListener
         student_signup_btn.setFont(new Font("Arial", Font.BOLD, 16));
         student_signup_btn.addActionListener(this);
 
+
         //Line 1 of Footnote for username creation in the right panel
         note1 = new JLabel("Note: The username must not contain special characters");
         note1.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -160,25 +158,30 @@ public class Welcome extends JFrame implements ActionListener
             if (event.getSource() == student_signup_btn)
             {
                 try {
-                    File file_name = new File("./Students/" + name_field.getText() + ".txt");
-                    if (file_name.exists())
+                    if(name_field.getText() == "" || email_field.getText() == "" || pass_field.getText() == "")
                     {
-                        name_field.setText("");
-                        JOptionPane.showMessageDialog(this, "Username already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this,"Input field(s) cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                     else
                     {
-                        BufferedWriter writer = new BufferedWriter(new FileWriter("./Students/" + name_field.getText() + ".txt"));
-                        writer.write(name_field.getText());
-                        writer.write("\n" + email_field.getText());
-                        writer.write("\n" + pass_field.getText());
-                        writer.close();
-                        JOptionPane.showMessageDialog(this, "Sign Up Successful", "Successful", JOptionPane.PLAIN_MESSAGE);
-                        student_dashboard student_dashboard = new student_dashboard();
-                        frame.dispose();
-
+                        File file_name = new File("./Students/" + name_field.getText() + ".txt");
+                        if (file_name.exists())
+                        {
+                            name_field.setText("");
+                            JOptionPane.showMessageDialog(this, "Username already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                        else
+                        {
+                            BufferedWriter writer = new BufferedWriter(new FileWriter("./Students/" + name_field.getText() + ".txt"));
+                            writer.write(name_field.getText());
+                            writer.write("\n" + email_field.getText());
+                            writer.write("\n" + pass_field.getText());
+                            writer.close();
+                            JOptionPane.showMessageDialog(this, "Sign Up Successful", "Successful", JOptionPane.PLAIN_MESSAGE);
+                            student_dashboard student_dashboard = new student_dashboard();
+                            frame.dispose();
+                        }
                     }
-
                 }
                 catch (IOException e)
                 {
