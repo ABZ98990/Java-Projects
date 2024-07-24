@@ -107,26 +107,19 @@ public class teacher_login extends JFrame implements ActionListener
                     {
                         last = line;
                     }
-                    if (name_field.getText().equals(first))
+                    if (pass_field.getText().equals(last))
                     {
-                        if (pass_field.getText().equals(last))
-                        {
-                            student_dashboard dashboard = new student_dashboard();
-                            frame.dispose();
-                        }
-                        else
-                        {
-                            pass_field.setText("");
-                            JOptionPane.showMessageDialog(this, "Incorrect Password!");
-                        }
+                        student_dashboard dashboard = new student_dashboard();
+                        frame.dispose();
                     }
                     else
                     {
-                        name_field.setText("");
-                        JOptionPane.showMessageDialog(this, "Wrong Name");
+                        pass_field.setText("");
+                        JOptionPane.showMessageDialog(this, "Incorrect Password!", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
                 else {
+                    name_field.setText("");
                     JOptionPane.showMessageDialog(this,"Incorrect username!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
