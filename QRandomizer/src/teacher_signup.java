@@ -128,8 +128,10 @@ public class teacher_signup extends JFrame implements ActionListener
                 {
                     BufferedWriter writer = new BufferedWriter(new FileWriter("./Teachers/" + name_field.getText() + ".txt"));
                     writer.write(name_field.getText());
-                    writer.write("\n" + email_field.getText());
-                    writer.write("\n" + pass_field.getText());
+                    writer.newLine();
+                    writer.write(email_field.getText());
+                    writer.newLine();
+                    writer.write(pass_field.getText());
                     writer.close();
                     JOptionPane.showMessageDialog(this, "Credentials have been stored!", "Successful", JOptionPane.PLAIN_MESSAGE);
                     name_field.setText("");
