@@ -14,7 +14,7 @@ public class teacher_dashboard extends JFrame implements ActionListener
     JLabel q_label, ans_label;
     JTextField q_text, ans_text;
     ImageIcon img = new ImageIcon("logo.png");
-    JButton logout_btn, q_btn, save_btn;
+    JButton logout_btn, add_btn, save_btn;
     teacher_dashboard()
     {
         logout_btn = new JButton("Logout now");
@@ -30,17 +30,17 @@ public class teacher_dashboard extends JFrame implements ActionListener
         q_label.setForeground(new Color(0x2B911));
 
         q_text = new JTextField();
-        q_text.setFont(new Font("Arial", Font.BOLD, 22));
+        q_text.setFont(new Font("Arial", Font.PLAIN, 22));
         q_text.setVisible(true);
         q_text.setForeground(new Color(0x2B911));
 
-        q_btn = new JButton("Add");
-        q_btn.setForeground(Color.WHITE);
-        q_btn.setVisible(true);
-        q_btn.setFocusable(false);
-        q_btn.setBackground(new Color(0x2B911));
-        q_btn.setFont(new Font("Arial", Font.PLAIN, 20));
-        q_btn.addActionListener(this);
+        add_btn = new JButton("Add");
+        add_btn.setForeground(Color.WHITE);
+        add_btn.setVisible(true);
+        add_btn.setFocusable(false);
+        add_btn.setBackground(new Color(0x2B911));
+        add_btn.setFont(new Font("Arial", Font.PLAIN, 20));
+        add_btn.addActionListener(this);
 
         ans_label = new JLabel("Answer: ");
         ans_label.setFont(new Font("Arial", Font.BOLD, 22));
@@ -48,7 +48,7 @@ public class teacher_dashboard extends JFrame implements ActionListener
         ans_label.setForeground(new Color(0x2B911));
 
         ans_text = new JTextField();
-        ans_text.setFont(new Font("Arial", Font.BOLD, 22));
+        ans_text.setFont(new Font("Arial", Font.PLAIN, 22));
         ans_text.setVisible(true);
         ans_text.setForeground(new Color(0x2B911));
 
@@ -59,7 +59,7 @@ public class teacher_dashboard extends JFrame implements ActionListener
         panel.add(logout_btn).setBounds(10,10,100,30);
         panel.add(q_label).setBounds(30, 100,500,35);
         panel.add(q_text).setBounds(30,140,700,35);
-        panel.add(q_btn).setBounds(750,240, 100,35);
+        panel.add(add_btn).setBounds(750,240, 100,35);
         panel.add(ans_label).setBounds(30,200,225, 30);
         panel.add(ans_text).setBounds(30,240,700,35);
 
@@ -83,10 +83,10 @@ public class teacher_dashboard extends JFrame implements ActionListener
             Welcome win = new Welcome();
             frame.dispose();
         }
-        if (event.getSource() == q_btn)
+        if (event.getSource() == add_btn)
         {
             try {
-                BufferedWriter q_writer = new BufferedWriter(new FileWriter("./QnA/q_"+count+".txt"));
+                BufferedWriter q_writer = new BufferedWriter(new FileWriter("./QnA/q_" + count + ".txt"));
                 BufferedWriter ans_writer = new BufferedWriter(new FileWriter("./QnA/a_" + count + ".txt"));
                 if (count < 2)
                 {
@@ -97,8 +97,8 @@ public class teacher_dashboard extends JFrame implements ActionListener
                 }
                 else
                 {
-                    q_writer.append("\n" + q_text.getText());
-                    ans_writer.append("\n" + q_text.getText());
+                    q_writer.append("\n").append(q_text.getText());
+                    ans_writer.append("\n").append(q_text.getText());
                     ans_text.setText("");
                     q_text.setText("");
                 }
