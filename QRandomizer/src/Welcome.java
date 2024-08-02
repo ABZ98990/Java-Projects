@@ -11,7 +11,7 @@ public class Welcome extends JFrame implements ActionListener
     JPanel panel_one, panel_two;
     JLabel p2_heading, p1_heading, name, email, password, student_login_note, teacher_login_text, teacher_signup_text, note1, note2;
     JTextField name_field, email_field, pass_field;
-    JButton student_signup_btn, teacher_login_btn, teacher_signup_btn;
+    JButton student_signup_btn, student_login_btn, teacher_login_btn, teacher_signup_btn;
     Welcome()
     {
         //Left side panel
@@ -114,32 +114,43 @@ public class Welcome extends JFrame implements ActionListener
         //Student Login Link note
         student_login_note = new JLabel("Already Signed Up?");
         student_login_note.setVisible(true);
+        student_login_note.setForeground(new Color(0x2B911));
+        student_login_note.setFont(new Font("Arial", Font.PLAIN, 14));
+
+        //Student Login Button
+        student_login_btn = new JButton("Login Now");
+        student_login_btn.setVisible(true);
+        student_login_btn.setFocusable(false);
+        student_login_btn.setBackground(new Color(0x2B911));
+        student_login_btn.setForeground(Color.WHITE);
+        student_login_btn.addActionListener(this);
 
 
 
         //Line 1 of Footnote for username creation in the right panel
         note1 = new JLabel("Note: The username must not contain special characters");
-        note1.setFont(new Font("Arial", Font.PLAIN, 16));
+        note1.setFont(new Font("Arial", Font.PLAIN, 14));
         note1.setVisible(true);
         note1.setForeground(new Color(0x2B911));
         //Line 2 of footnote
         note2 = new JLabel("or spaces except Underscore ( _ ) or Hyphens ( - ).");
-        note2.setFont(new Font("Arial", Font.PLAIN, 16));
+        note2.setFont(new Font("Arial", Font.PLAIN, 14));
         note2.setVisible(true);
         note2.setForeground(new Color(0x2B911));
 
         //Adding Fields in the right panel
         panel_two.add(p2_heading).setBounds(190,135,234,30);
-        panel_two.add(name).setBounds(85,200,100,30);               //"name"
-        panel_two.add(name_field).setBounds(185, 200, 234,30);      //name_field
-        panel_two.add(email).setBounds(85,250,100,30);              //"email"
-        panel_two.add(email_field).setBounds(185,250,234,30);       //email_field
-        panel_two.add(password).setBounds(85, 300, 234, 30);        //password
-        panel_two.add(pass_field).setBounds(185, 300, 234, 30);     //password_field
-        panel_two.add(student_signup_btn).setBounds(225,350,95,30); //student_signup_button
-        panel_two.add(student_login_note).setBounds(185,400,95,30); //student_login_note
-        panel_two.add(note1).setBounds(70,515,500,120);             //footnote_one
-        panel_two.add(note2).setBounds(110,530,500,120);            //footnote_two
+        panel_two.add(name).setBounds(85,200,100,30);                //"name"
+        panel_two.add(name_field).setBounds(185, 200, 234,30);       //name_field
+        panel_two.add(email).setBounds(85,250,100,30);               //"email"
+        panel_two.add(email_field).setBounds(185,250,234,30);        //email_field
+        panel_two.add(password).setBounds(85, 300, 234, 30);         //password
+        panel_two.add(pass_field).setBounds(185, 300, 234, 30);      //password_field
+        panel_two.add(student_signup_btn).setBounds(225,350,95,30);  //student_signup_button
+        panel_two.add(student_login_note).setBounds(175,400,130,30); //student_login_note
+        panel_two.add(student_login_btn).setBounds(315,400,110,24);   //student_login_button
+        panel_two.add(note1).setBounds(70,515,500,120);              //footnote_one
+        panel_two.add(note2).setBounds(110,530,500,120);             //footnote_two
 
 
         //Creating frame window
@@ -149,9 +160,9 @@ public class Welcome extends JFrame implements ActionListener
         frame.setResizable(false);
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         frame.setIconImage(img.getImage());
         frame.setLocationRelativeTo(null);
+
         //Adding panels to the frame window
         frame.add(panel_one).setBounds(0,0,453,680 );
         frame.add(panel_two).setBounds(453,0,547,680);
@@ -202,6 +213,11 @@ public class Welcome extends JFrame implements ActionListener
                     }
                 }
             }
+        }
+        if (event.getSource() == student_login_btn)
+        {
+            student_dashboard student_dashboard = new student_dashboard();
+            frame.dispose();
         }
         if (event.getSource() == teacher_login_btn)
         {
