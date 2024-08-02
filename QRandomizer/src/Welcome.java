@@ -174,15 +174,15 @@ public class Welcome extends JFrame implements ActionListener
         {
             if (event.getSource() == student_signup_btn)
             {
-                if(name_field.getText() == "")
+                if(name_field.getText().isEmpty())
                 {
                     JOptionPane.showMessageDialog(this,"Name field cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-                else if (email_field.getText() == "")
+                else if (email_field.getText().isEmpty())
                 {
                     JOptionPane.showMessageDialog(this,"Email field cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
 
-                } else if (pass_field.getText() == "")
+                } else if (pass_field.getText().isEmpty())
                 {
                     JOptionPane.showMessageDialog(this,"Password field cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
                 }

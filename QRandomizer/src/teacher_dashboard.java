@@ -68,7 +68,7 @@ public class teacher_dashboard extends JFrame implements ActionListener
         frame.setSize(960,580);
         frame.setResizable(false);
         frame.setLayout(null);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.setIconImage(img.getImage());
         frame.setLocationRelativeTo(null);
