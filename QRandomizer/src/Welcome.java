@@ -209,7 +209,7 @@ public class Welcome extends JFrame implements ActionListener
                     }
                     catch (IOException e)
                     {
-                        e.printStackTrace();
+                        throw new RuntimeException(e);
                     }
                 }
             }

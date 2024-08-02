@@ -143,7 +143,7 @@ public class teacher_signup extends JFrame implements ActionListener
                 }
             catch (IOException e)
             {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }

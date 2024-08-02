@@ -125,7 +125,7 @@ public class teacher_login extends JFrame implements ActionListener
             }
             catch (IOException e)
             {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }
