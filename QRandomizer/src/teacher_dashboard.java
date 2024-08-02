@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class teacher_dashboard extends JFrame implements ActionListener
 {
-    int count = 1;
+    boolean check = true;
     JFrame frame;
     JPanel panel;
     JLabel q_label, ans_label;
@@ -85,31 +85,25 @@ public class teacher_dashboard extends JFrame implements ActionListener
         }
         if (event.getSource() == add_btn)
         {
-            try {
-                BufferedWriter q_writer = new BufferedWriter(new FileWriter("./QnA/q_" + count + ".txt"));
-                BufferedWriter ans_writer = new BufferedWriter(new FileWriter("./QnA/a_" + count + ".txt"));
-                if (count < 2)
-                {
-                    q_writer.write(q_text.getText());
-                    ans_writer.write(ans_text.getText());
-                    q_text.setText("");
-                    ans_text.setText("");
-                }
-                else
-                {
-                    q_writer.append("\n").append(q_text.getText());
-                    ans_writer.append("\n").append(q_text.getText());
-                    ans_text.setText("");
-                    q_text.setText("");
-                }
-                q_writer.close();
-                count +=1;
-                frame.repaint();
-            }
-            catch (IOException e)
+            try (BufferedWriter q_writer = new BufferedWriter(new FileWriter("./QnA/questions.txt", true));
+                 BufferedWriter ans_writer = new BufferedWriter(new FileWriter("./QnA/answers.txt", true)))
             {
+                if (!check)
+                {
+                    q_writer.write("\n");
+                    ans_writer.write("\n");
+                }
+                // The 'true' argument in FileWriter enables appending mode
+                q_writer.write(q_text.getText());
+                ans_writer.write(ans_text.getText());
+                q_text.setText("");
+                ans_text.setText("");
+                check = false;
+            }
+            catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
         }
     }
 }
